@@ -5,8 +5,8 @@ import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup"
 
 class Login extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             email: '',
             password: '',
@@ -25,6 +25,7 @@ class Login extends Component {
         if(nextProps.auth.isAuthenticated){
             this.props.history.push('/dashboard');
         }
+        console.log('componentWillReceiveProps');
         if(nextProps.errors){
             this.setState({errors: nextProps.errors});
         }
@@ -44,7 +45,9 @@ class Login extends Component {
         // console.log(user);
     }
     render() {
+        console.log(this.state);
         const { errors } = this.state;
+        console.log(errors);
         return (
             <div className="login">
                 <div className="container">
